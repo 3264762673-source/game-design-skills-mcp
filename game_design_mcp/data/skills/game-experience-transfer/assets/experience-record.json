@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_id": null,
+  "revision": 1,
+  "parent_record_id": null,
+  "original_request": null,
+  "pleasure": {
+    "labels": [],
+    "statement": null,
+    "source": { "description": null, "locator": null, "evidence_ids": [] },
+    "knowledge_conditions": [],
+    "essential_conditions": []
+  },
+  "target": { "medium": null, "scope": null, "hard_constraints": [] },
+  "mapping": [],
+  "proposal": { "version": 1, "mechanism": null, "loop": [], "implementation_locator": null },
+  "assessment": {
+    "proposal_version": 1,
+    "structural_fit": "unknown",
+    "original_experience": "untested",
+    "fun": "untested",
+    "rationale": null,
+    "evidence_ids": []
+  },
+  "evidence": [],
+  "emergent_pleasures": [],
+  "decision": { "next_action": "prototype", "reason": null, "goal_change_confirmed": false },
+  "assumptions": [],
+  "open_questions": [],
+  "exceptions": [],
+  "next_experiment": { "proposal_version": 1, "change": null, "held_constant": [], "support_signals": [], "disconfirm_signals": [], "result": null },
+  "history": []
+}

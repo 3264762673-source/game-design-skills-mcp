@@ -1,0 +1,4 @@
+interface:
+  display_name: "影之刃零：画面与打击手感"
+  short_description: "结合体验论、官方资料与打击反馈研究，提取功夫交锋、画面和声音的可实施规格"
+  default_prompt: "用 $phantom-blade-zero-combat-feel 为当前项目提取影之刃零风格的动作、画面、镜头与音效规格，标明证据和待测假设。"

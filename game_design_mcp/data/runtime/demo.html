@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Game Design Skills — v0.1.0 效果实验台</title>
+<style>body{margin:0;background:#111827;color:#e5e7eb;font:16px system-ui}main{max-width:960px;margin:auto;padding:32px}h1{font-size:28px}p{color:#b6c3d5;line-height:1.7}label{display:inline-block;margin:8px}button,select{font:inherit;padding:10px;border-radius:8px}button{cursor:pointer}canvas{display:block;width:100%;background:#172438;border:1px solid #475569;border-radius:16px;margin-top:24px}output{display:block;padding:16px}button:focus-visible,select:focus-visible{outline:3px solid #65d6ff;outline-offset:3px}</style>
+<main><h1>可调用效果实验台 <small>v0.1.0</small></h1><p>点击舞台或按“确认命中”。效果只响应已确认命中；“挥空”不播放命中反馈。底层代码不修改伤害或游戏时间。</p>
+<label>效果 <select id="effect"><option value="impact">接触冲击</option><option value="burst">径向爆发</option><option value="pulse">结果脉冲</option></select></label>
+<label><input type="checkbox" id="reduced">减效</label><button id="hit">确认命中</button> <button id="miss">挥空</button> <button id="clear">取消／重置</button>
+<canvas id="stage" width="900" height="420" aria-label="反馈显示区域"></canvas><output id="status" aria-live="polite">等待确认事件。键盘可使用上方按钮。</output>
+<p>接入：引入 effects.js → createFeedback(canvas) → emit(event, config)。坐标使用 Canvas 内部像素；窗口缩放时由宿主换算。dedupe 保留最近 1024 个事件，每实例最多 32 个并发。</p></main>
+<script src="effects.js"></script><script>
+const canvas=document.querySelector('canvas'), fx=GameFeedback.createFeedback(canvas);let seq=0;
+function emit(x,y,confirmed=true){const ok=fx.emit({id:String(++seq),targetId:'dummy',kind:confirmed?'hit.confirmed':'attack.started',confirmed,x,y},{effect:document.querySelector('#effect').value,reduced_motion:document.querySelector('#reduced').checked});document.querySelector('#status').textContent=ok?'已显示确认反馈':'未确认命中，不播放接触反馈';}
+document.querySelector('#hit').onclick=()=>emit(450,210);document.querySelector('#miss').onclick=()=>emit(450,210,false);document.querySelector('#clear').onclick=()=>{fx.clear();document.querySelector('#status').textContent='已清空反馈与事件缓存'};
+canvas.onclick=e=>{const r=canvas.getBoundingClientRect();emit((e.clientX-r.left)*canvas.width/r.width,(e.clientY-r.top)*canvas.height/r.height)};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)fx.clear()});window.addEventListener('pagehide',()=>fx.destroy());
+</script></html>

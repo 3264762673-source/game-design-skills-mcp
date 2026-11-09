@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+let cb;global.requestAnimationFrame=f=>{cb=f;return 1};global.cancelAnimationFrame=()=>{};global.matchMedia=()=>({matches:false});
+const api=require('../game_design_mcp/data/runtime/effects.js');
+const ctx=new Proxy({}, {get:()=>()=>{},set:()=>true}),canvas={width:900,height:420,getContext:()=>ctx};
+const fx=api.createFeedback(canvas),event={id:'1',targetId:'enemy',kind:'hit.confirmed',confirmed:true,x:10,y:20};
+assert.equal(fx.emit({...event,confirmed:false}),false);assert.equal(fx.emit(event),true);assert.equal(fx.emit(event),false);
+fx.cancel('enemy');assert.equal(fx.activeCount(),0);fx.clear();
+for(let i=0;i<40;i++)fx.emit({...event,id:String(i)});
+assert.equal(fx.activeCount(),32);cb(performance.now()+3000);assert.equal(fx.activeCount(),0);
+assert.throws(()=>api.validate({particles:49}));assert.throws(()=>api.validate({color:'red'}));
+assert.equal(api.frame({reduced_motion:true},0).radius,api.frame({reduced_motion:true},100).radius);
+assert.equal(api.frame({},3000).alpha,0);fx.destroy();assert.throws(()=>fx.emit(event));
+console.log('Effects: confirmation, dedupe, capacity, expiry, cancellation, reduced motion and disposal passed');

@@ -1,0 +1,4 @@
+interface:
+  display_name: "游戏体验迁移与乐趣记录"
+  short_description: "拆解乐趣的成立条件，迁移到新玩法，并分别记录原体验与新乐趣的验证状态"
+  default_prompt: "使用 $game-experience-transfer，把我描述的乐趣迁移到目标玩法，检查诠释与机制是否对应，并记录迁移中发现的新乐趣。"

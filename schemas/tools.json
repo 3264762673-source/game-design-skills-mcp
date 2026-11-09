@@ -1,0 +1,581 @@
+[
+  {
+    "name": "list_capabilities",
+    "title": null,
+    "description": "Discover versioned tools, skill documents and validation boundaries.",
+    "inputSchema": {
+      "properties": {},
+      "title": "list_capabilitiesArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "get_skill",
+    "title": null,
+    "description": "Read an allowlisted bundled skill/reference. List capabilities for valid paths.",
+    "inputSchema": {
+      "properties": {
+        "skill_id": {
+          "title": "Skill Id",
+          "type": "string"
+        },
+        "document": {
+          "default": "SKILL.md",
+          "title": "Document",
+          "type": "string"
+        }
+      },
+      "required": [
+        "skill_id"
+      ],
+      "title": "get_skillArguments",
+      "type": "object"
+    },
+    "outputSchema": {
+      "properties": {
+        "result": {
+          "title": "Result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result"
+      ],
+      "title": "get_skillOutput",
+      "type": "object"
+    },
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "create_effect_bundle",
+    "title": null,
+    "description": "Return runnable Canvas impact/burst/pulse code and validated bounded configuration.",
+    "inputSchema": {
+      "$defs": {
+        "EffectSpec": {
+          "additionalProperties": false,
+          "properties": {
+            "effect": {
+              "default": "impact",
+              "enum": [
+                "impact",
+                "burst",
+                "pulse"
+              ],
+              "title": "Effect",
+              "type": "string"
+            },
+            "duration_ms": {
+              "default": 240,
+              "maximum": 2000,
+              "minimum": 40,
+              "title": "Duration Ms",
+              "type": "integer"
+            },
+            "radius_px": {
+              "default": 36,
+              "maximum": 160,
+              "minimum": 1,
+              "title": "Radius Px",
+              "type": "number"
+            },
+            "particles": {
+              "default": 12,
+              "maximum": 48,
+              "minimum": 0,
+              "title": "Particles",
+              "type": "integer"
+            },
+            "color": {
+              "default": "#65d6ff",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "title": "Color",
+              "type": "string"
+            },
+            "reduced_motion": {
+              "default": false,
+              "title": "Reduced Motion",
+              "type": "boolean"
+            }
+          },
+          "title": "EffectSpec",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/EffectSpec"
+        }
+      },
+      "required": [
+        "spec"
+      ],
+      "title": "create_effect_bundleArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "calculate_combat",
+    "title": null,
+    "description": "Calculate deterministic subtractive damage, hit count and TTK in seconds.",
+    "inputSchema": {
+      "$defs": {
+        "CombatSpec": {
+          "additionalProperties": false,
+          "properties": {
+            "hp": {
+              "exclusiveMinimum": 0,
+              "maximum": 1000000000000.0,
+              "title": "Hp",
+              "type": "number"
+            },
+            "attack": {
+              "exclusiveMinimum": 0,
+              "maximum": 1000000000.0,
+              "title": "Attack",
+              "type": "number"
+            },
+            "defense": {
+              "default": 0,
+              "maximum": 1000000000.0,
+              "minimum": 0,
+              "title": "Defense",
+              "type": "number"
+            },
+            "multiplier": {
+              "default": 1,
+              "exclusiveMinimum": 0,
+              "maximum": 1000,
+              "title": "Multiplier",
+              "type": "number"
+            },
+            "minimum_damage": {
+              "default": 1,
+              "exclusiveMinimum": 0,
+              "maximum": 1000000000.0,
+              "title": "Minimum Damage",
+              "type": "number"
+            },
+            "interval_seconds": {
+              "default": 1,
+              "exclusiveMinimum": 0,
+              "maximum": 3600,
+              "title": "Interval Seconds",
+              "type": "number"
+            },
+            "first_hit_seconds": {
+              "default": 0,
+              "maximum": 3600,
+              "minimum": 0,
+              "title": "First Hit Seconds",
+              "type": "number"
+            }
+          },
+          "required": [
+            "hp",
+            "attack"
+          ],
+          "title": "CombatSpec",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/CombatSpec"
+        }
+      },
+      "required": [
+        "spec"
+      ],
+      "title": "calculate_combatArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "validate_decision_card",
+    "title": null,
+    "description": "Validate the eight-field decision card and evidence presence; not evidence truth.",
+    "inputSchema": {
+      "$defs": {
+        "DecisionCard": {
+          "additionalProperties": false,
+          "properties": {
+            "trigger": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Trigger",
+              "type": "string"
+            },
+            "hypotheses": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "minItems": 1,
+              "title": "Hypotheses",
+              "type": "array"
+            },
+            "check": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Check",
+              "type": "string"
+            },
+            "change": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Change",
+              "type": "string"
+            },
+            "exclusions": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Exclusions",
+              "type": "string"
+            },
+            "expected": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Expected",
+              "type": "string"
+            },
+            "rollback": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Rollback",
+              "type": "string"
+            },
+            "sources": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "minItems": 1,
+              "title": "Sources",
+              "type": "array"
+            },
+            "status": {
+              "default": "hypothesis",
+              "enum": [
+                "hypothesis",
+                "observed",
+                "compared"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "evidence": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "trigger",
+            "hypotheses",
+            "check",
+            "change",
+            "exclusions",
+            "expected",
+            "rollback",
+            "sources"
+          ],
+          "title": "DecisionCard",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "card": {
+          "$ref": "#/$defs/DecisionCard"
+        }
+      },
+      "required": [
+        "card"
+      ],
+      "title": "validate_decision_cardArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "audit_system",
+    "title": null,
+    "description": "Check finite state graph references, reachability, ambiguity and nonterminal dead ends.",
+    "inputSchema": {
+      "$defs": {
+        "SystemSpec": {
+          "additionalProperties": false,
+          "properties": {
+            "initial": {
+              "maxLength": 100,
+              "minLength": 1,
+              "title": "Initial",
+              "type": "string"
+            },
+            "states": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100,
+              "minItems": 1,
+              "title": "States",
+              "type": "array"
+            },
+            "terminal": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100,
+              "title": "Terminal",
+              "type": "array"
+            },
+            "transitions": {
+              "items": {
+                "$ref": "#/$defs/Transition"
+              },
+              "maxItems": 500,
+              "title": "Transitions",
+              "type": "array"
+            }
+          },
+          "required": [
+            "initial",
+            "states",
+            "transitions"
+          ],
+          "title": "SystemSpec",
+          "type": "object"
+        },
+        "Transition": {
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "maxLength": 100,
+              "minLength": 1,
+              "title": "Source",
+              "type": "string"
+            },
+            "action": {
+              "maxLength": 100,
+              "minLength": 1,
+              "title": "Action",
+              "type": "string"
+            },
+            "target": {
+              "maxLength": 100,
+              "minLength": 1,
+              "title": "Target",
+              "type": "string"
+            },
+            "feedback": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Feedback",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source",
+            "action",
+            "target",
+            "feedback"
+          ],
+          "title": "Transition",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/SystemSpec"
+        }
+      },
+      "required": [
+        "spec"
+      ],
+      "title": "audit_systemArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "audit_transfer",
+    "title": null,
+    "description": "Report missing/partial experience mappings without claiming actual pleasure transfer.",
+    "inputSchema": {
+      "$defs": {
+        "Mapping": {
+          "additionalProperties": false,
+          "properties": {
+            "condition": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Condition",
+              "type": "string"
+            },
+            "action": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Action",
+              "type": "string"
+            },
+            "feedback": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Feedback",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "mapped",
+                "partial",
+                "missing",
+                "unknown"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "condition",
+            "action",
+            "feedback",
+            "status"
+          ],
+          "title": "Mapping",
+          "type": "object"
+        },
+        "TransferSpec": {
+          "additionalProperties": false,
+          "properties": {
+            "pleasure": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Pleasure",
+              "type": "string"
+            },
+            "mappings": {
+              "items": {
+                "$ref": "#/$defs/Mapping"
+              },
+              "maxItems": 50,
+              "minItems": 1,
+              "title": "Mappings",
+              "type": "array"
+            },
+            "evidence": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "pleasure",
+            "mappings"
+          ],
+          "title": "TransferSpec",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/TransferSpec"
+        }
+      },
+      "required": [
+        "spec"
+      ],
+      "title": "audit_transferArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "generate_ui_tokens",
+    "title": null,
+    "description": "Generate responsive layout CSS and choose black/white button text by contrast.",
+    "inputSchema": {
+      "$defs": {
+        "UiSpec": {
+          "additionalProperties": false,
+          "properties": {
+            "accent": {
+              "default": "#2563eb",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "title": "Accent",
+              "type": "string"
+            },
+            "density": {
+              "default": "comfortable",
+              "enum": [
+                "comfortable",
+                "compact"
+              ],
+              "title": "Density",
+              "type": "string"
+            },
+            "radius_px": {
+              "default": 12,
+              "maximum": 32,
+              "minimum": 0,
+              "title": "Radius Px",
+              "type": "integer"
+            }
+          },
+          "title": "UiSpec",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/UiSpec"
+        }
+      },
+      "required": [
+        "spec"
+      ],
+      "title": "generate_ui_tokensArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  }
+]

@@ -1,0 +1,7 @@
+.venv/
+.wheel-check/
+__pycache__/
+*.pyc
+dist/
+.env
+*.egg-info/
