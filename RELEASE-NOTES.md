@@ -1,19 +1,23 @@
-# v0.1.0
+# v0.2.0 · grill-me × 体验论策划
 
-首个可执行版本：7 个技能快照，8 个 MCP 工具，3 个 Canvas 反馈效果。
+新增 game-design-planning，将决策依赖追问、概念诠释、玩家能动性、行为反馈及反例检查编译为策划规格。
+
+- 8 个 Skills，11 个 MCP 工具；保留原有接口和 3 种 Canvas 效果。
+- 新工具：start_design_interview、advance_design_interview、compile_game_design。
+- 修改上游答案后，重新开放下游，保留历史并使旧确认失效。
+- 草案、待确认和已确认分开；假设不是共识，未试玩仍为待测。
+- 包含完整虚构示例、Schema、测试及发布脚本。
 
 ## 使用
 
-- 下载 wheel 后执行 `python -m pip install <wheel文件路径>`。
-- 将 `game-design-skills-mcp` 可执行文件的绝对路径添加到 MCP 客户端配置。
-- 浏览器效果包解压后直接打开 demo.html，无需安装服务器。
-- 阅读仓库 README 和 schemas/tools.json 获取调用契约。
+Python 3.11+ 安装本版 wheel，再启动 game-design-skills-mcp；客户端配置见 README。
+独立技能下载 skills-0.2.0.zip，将 game-design-planning 文件夹复制到客户端技能目录。
+先调用 start_design_interview，保存 session，通过 advance_design_interview 更新，再用 compile_game_design 输出规格。
 
-## 验证范围
+## 验证边界
 
-- Python 单元测试及真实 stdio MCP 会话：初始化、8 个工具的有效调用及错误参数处理。
-- JavaScript：事件确认、去重、并发容量、生命周期、减效及销毁。
-- 浏览器：确认命中与挥空的状态响应。
-- wheel 与源码构建。
+自动测试覆盖真实 stdio、全部工具、依赖及状态约束。服务按输入生成问题结构、编译答案，不认证其来源、不验证自然语言语义，不替代设计判断或真人试玩。
 
-本版未做真人体验实验；不提供 Unity/UE 插件、音效或全局镜头。不将设计卡校验或体验映射完整性当成实际好玩的证明。
+## 兼容性
+
+新增接口，旧调用方式不变。create_effect_bundle 的 version 表示包版本，新增 effect_runtime_version 标明未改动的 0.1.0 运行时。没有改写 v0.1.0 标签或发布附件。

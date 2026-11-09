@@ -1,0 +1,355 @@
+{
+  "session_id": "example-mastery",
+  "revision": 9,
+  "original_request": "虚构示例：做一个网页单敌人战斗原型，让玩家读懂强敌并通过自己的应对夺回主动权。",
+  "decisions": [
+    {
+      "id": "scope",
+      "topic": "范围与约束",
+      "question": "本轮要交付什么、目标载体是什么、哪些条件必须保留？",
+      "recommendation": "沿用原请求与项目事实，先限定一个可实施的最小方案。",
+      "depends_on": [],
+      "status": "resolved",
+      "answer": "【虚构示例决定】网页单敌人原型；只验证一次读招、应对、反击闭环。先产出规格，不制作完整游戏。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "experience",
+      "topic": "目标体验",
+      "question": "玩家在什么处境与关系中，通过什么行动，让什么变化对自己有意义？",
+      "recommendation": "写具体体验句，区分玩家选择与角色表演；保留原目标文字。",
+      "depends_on": [
+        "scope"
+      ],
+      "status": "resolved",
+      "answer": "面对会惩罚盲目攻击的对手，我读懂预警并选择躲避或格挡，获得反击机会，把结果理解为自己掌握了对手，而非角色数值碾压。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "meaning",
+      "topic": "概念诠释与预期共识",
+      "question": "核心概念分别意味着什么？玩家凭什么理解，可能怎样误读？",
+      "recommendation": "为每个概念列本次含义、感知依据和另一种解释。",
+      "depends_on": [
+        "experience"
+      ],
+      "status": "resolved",
+      "answer": "强敌：会阻挡并反击，玩家已知道贸然进攻的代价。掌握：同一威胁下能重复解释并执行有效应对。另一种诠释：自动格挡可能被看作角色强大，而非玩家学会。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "agency",
+      "topic": "玩家能动性",
+      "question": "玩家实际上能选择什么、付出什么代价？只有自动演出还会有同样体验吗？",
+      "recommendation": "找出玩家可控制且会改变结果的时机、方向或取舍。",
+      "depends_on": [
+        "experience"
+      ],
+      "status": "resolved",
+      "answer": "玩家选择躲避方向或格挡时机；盲目攻击会失去反击机会。角色不会自动选择应对。移除选择后可能只剩观看动画的乐趣。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "conditions",
+      "topic": "必要条件与反例",
+      "question": "逐项删除哪些关系会使原体验改变？哪些符号可以替换？",
+      "recommendation": "列候选条件 ID；用反例检查，暂定条件不当作心理定律。",
+      "depends_on": [
+        "meaning",
+        "agency"
+      ],
+      "status": "resolved",
+      "answer": "C1：对手确有可辨识威胁；C2：玩家的应对改变结算；C3：成功结果能归因于该应对。删除 C2 后候选体验偏向碾压或观赏。武器外观可替换；这三项仍是待测必要条件。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "feedback",
+      "topic": "行为—结果—诠释",
+      "question": "每个条件通过哪条规则和哪种反馈被理解？缺失时会变成什么新乐趣？",
+      "recommendation": "逐条件映射操作、真实结果、可感知反馈和预期含义，保留偏移。",
+      "depends_on": [
+        "conditions"
+      ],
+      "status": "resolved",
+      "answer": "C1→敌人预备姿态和有效范围；C2→合法应对使本次攻击被避开或格挡，失败则受击；C3→命中确认定位到对手并显示反击窗口。烟尘不是伤害范围。新乐趣如纯演出欣赏单独记录。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "loop",
+      "topic": "最小可实施闭环",
+      "question": "初始状态、可选动作、触发、结算、终止、失败恢复分别是什么？",
+      "recommendation": "用一轮闭环写出实现者可执行的规格，数值标为试调值。",
+      "depends_on": [
+        "feedback",
+        "scope"
+      ],
+      "status": "resolved",
+      "answer": "初始：双方待机。敌人进入预备，窗口设为配置参数；玩家选择方向/格挡。攻击时结算碰撞与防御，成功进入反击机会，失败受击后恢复。玩家在机会内反击成功后本轮结束；否则回待机。双方生命归零则结算，可重置。各时长与伤害均为原型试调参数。",
+      "basis": "user",
+      "locator": null
+    },
+    {
+      "id": "experiment",
+      "topic": "否定实验与交付",
+      "question": "怎样区分原体验成立、新乐趣出现及两者皆无？什么结果会推翻方案？",
+      "recommendation": "提出一个有反例标准的比较，分别记录原迁移和新增乐趣，未试玩保持待测。",
+      "depends_on": [
+        "loop"
+      ],
+      "status": "resolved",
+      "answer": "保持敌人、表现和数值相同，对比主动选择应对与自动应对。先让玩家说明为何成功，再问体验。若两版都只描述角色表演且不能解释行动结果，反对当前掌握解释。原迁移与新观赏乐趣分开记录；当前无试玩结果。",
+      "basis": "user",
+      "locator": null
+    }
+  ],
+  "history": [
+    {
+      "revision": 2,
+      "decision_id": "scope",
+      "previous": {
+        "id": "scope",
+        "topic": "范围与约束",
+        "question": "本轮要交付什么、目标载体是什么、哪些条件必须保留？",
+        "recommendation": "沿用原请求与项目事实，先限定一个可实施的最小方案。",
+        "depends_on": [],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "scope",
+        "topic": "范围与约束",
+        "question": "本轮要交付什么、目标载体是什么、哪些条件必须保留？",
+        "recommendation": "沿用原请求与项目事实，先限定一个可实施的最小方案。",
+        "depends_on": [],
+        "status": "resolved",
+        "answer": "【虚构示例决定】网页单敌人原型；只验证一次读招、应对、反击闭环。先产出规格，不制作完整游戏。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 3,
+      "decision_id": "experience",
+      "previous": {
+        "id": "experience",
+        "topic": "目标体验",
+        "question": "玩家在什么处境与关系中，通过什么行动，让什么变化对自己有意义？",
+        "recommendation": "写具体体验句，区分玩家选择与角色表演；保留原目标文字。",
+        "depends_on": [
+          "scope"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "experience",
+        "topic": "目标体验",
+        "question": "玩家在什么处境与关系中，通过什么行动，让什么变化对自己有意义？",
+        "recommendation": "写具体体验句，区分玩家选择与角色表演；保留原目标文字。",
+        "depends_on": [
+          "scope"
+        ],
+        "status": "resolved",
+        "answer": "面对会惩罚盲目攻击的对手，我读懂预警并选择躲避或格挡，获得反击机会，把结果理解为自己掌握了对手，而非角色数值碾压。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 4,
+      "decision_id": "meaning",
+      "previous": {
+        "id": "meaning",
+        "topic": "概念诠释与预期共识",
+        "question": "核心概念分别意味着什么？玩家凭什么理解，可能怎样误读？",
+        "recommendation": "为每个概念列本次含义、感知依据和另一种解释。",
+        "depends_on": [
+          "experience"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "meaning",
+        "topic": "概念诠释与预期共识",
+        "question": "核心概念分别意味着什么？玩家凭什么理解，可能怎样误读？",
+        "recommendation": "为每个概念列本次含义、感知依据和另一种解释。",
+        "depends_on": [
+          "experience"
+        ],
+        "status": "resolved",
+        "answer": "强敌：会阻挡并反击，玩家已知道贸然进攻的代价。掌握：同一威胁下能重复解释并执行有效应对。另一种诠释：自动格挡可能被看作角色强大，而非玩家学会。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 5,
+      "decision_id": "agency",
+      "previous": {
+        "id": "agency",
+        "topic": "玩家能动性",
+        "question": "玩家实际上能选择什么、付出什么代价？只有自动演出还会有同样体验吗？",
+        "recommendation": "找出玩家可控制且会改变结果的时机、方向或取舍。",
+        "depends_on": [
+          "experience"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "agency",
+        "topic": "玩家能动性",
+        "question": "玩家实际上能选择什么、付出什么代价？只有自动演出还会有同样体验吗？",
+        "recommendation": "找出玩家可控制且会改变结果的时机、方向或取舍。",
+        "depends_on": [
+          "experience"
+        ],
+        "status": "resolved",
+        "answer": "玩家选择躲避方向或格挡时机；盲目攻击会失去反击机会。角色不会自动选择应对。移除选择后可能只剩观看动画的乐趣。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 6,
+      "decision_id": "conditions",
+      "previous": {
+        "id": "conditions",
+        "topic": "必要条件与反例",
+        "question": "逐项删除哪些关系会使原体验改变？哪些符号可以替换？",
+        "recommendation": "列候选条件 ID；用反例检查，暂定条件不当作心理定律。",
+        "depends_on": [
+          "meaning",
+          "agency"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "conditions",
+        "topic": "必要条件与反例",
+        "question": "逐项删除哪些关系会使原体验改变？哪些符号可以替换？",
+        "recommendation": "列候选条件 ID；用反例检查，暂定条件不当作心理定律。",
+        "depends_on": [
+          "meaning",
+          "agency"
+        ],
+        "status": "resolved",
+        "answer": "C1：对手确有可辨识威胁；C2：玩家的应对改变结算；C3：成功结果能归因于该应对。删除 C2 后候选体验偏向碾压或观赏。武器外观可替换；这三项仍是待测必要条件。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 7,
+      "decision_id": "feedback",
+      "previous": {
+        "id": "feedback",
+        "topic": "行为—结果—诠释",
+        "question": "每个条件通过哪条规则和哪种反馈被理解？缺失时会变成什么新乐趣？",
+        "recommendation": "逐条件映射操作、真实结果、可感知反馈和预期含义，保留偏移。",
+        "depends_on": [
+          "conditions"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "feedback",
+        "topic": "行为—结果—诠释",
+        "question": "每个条件通过哪条规则和哪种反馈被理解？缺失时会变成什么新乐趣？",
+        "recommendation": "逐条件映射操作、真实结果、可感知反馈和预期含义，保留偏移。",
+        "depends_on": [
+          "conditions"
+        ],
+        "status": "resolved",
+        "answer": "C1→敌人预备姿态和有效范围；C2→合法应对使本次攻击被避开或格挡，失败则受击；C3→命中确认定位到对手并显示反击窗口。烟尘不是伤害范围。新乐趣如纯演出欣赏单独记录。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 8,
+      "decision_id": "loop",
+      "previous": {
+        "id": "loop",
+        "topic": "最小可实施闭环",
+        "question": "初始状态、可选动作、触发、结算、终止、失败恢复分别是什么？",
+        "recommendation": "用一轮闭环写出实现者可执行的规格，数值标为试调值。",
+        "depends_on": [
+          "feedback",
+          "scope"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "loop",
+        "topic": "最小可实施闭环",
+        "question": "初始状态、可选动作、触发、结算、终止、失败恢复分别是什么？",
+        "recommendation": "用一轮闭环写出实现者可执行的规格，数值标为试调值。",
+        "depends_on": [
+          "feedback",
+          "scope"
+        ],
+        "status": "resolved",
+        "answer": "初始：双方待机。敌人进入预备，窗口设为配置参数；玩家选择方向/格挡。攻击时结算碰撞与防御，成功进入反击机会，失败受击后恢复。玩家在机会内反击成功后本轮结束；否则回待机。双方生命归零则结算，可重置。各时长与伤害均为原型试调参数。",
+        "basis": "user",
+        "locator": null
+      }
+    },
+    {
+      "revision": 9,
+      "decision_id": "experiment",
+      "previous": {
+        "id": "experiment",
+        "topic": "否定实验与交付",
+        "question": "怎样区分原体验成立、新乐趣出现及两者皆无？什么结果会推翻方案？",
+        "recommendation": "提出一个有反例标准的比较，分别记录原迁移和新增乐趣，未试玩保持待测。",
+        "depends_on": [
+          "loop"
+        ],
+        "status": "open",
+        "answer": null,
+        "basis": null,
+        "locator": null
+      },
+      "current": {
+        "id": "experiment",
+        "topic": "否定实验与交付",
+        "question": "怎样区分原体验成立、新乐趣出现及两者皆无？什么结果会推翻方案？",
+        "recommendation": "提出一个有反例标准的比较，分别记录原迁移和新增乐趣，未试玩保持待测。",
+        "depends_on": [
+          "loop"
+        ],
+        "status": "resolved",
+        "answer": "保持敌人、表现和数值相同，对比主动选择应对与自动应对。先让玩家说明为何成功，再问体验。若两版都只描述角色表演且不能解释行动结果，反对当前掌握解释。原迁移与新观赏乐趣分开记录；当前无试玩结果。",
+        "basis": "user",
+        "locator": null
+      }
+    }
+  ],
+  "confirmed_revision": null,
+  "explore_assumptions": false
+}

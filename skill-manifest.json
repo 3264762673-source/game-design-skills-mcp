@@ -1,62 +1,39 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "skills": [
-    "ui-layout-design",
-    "game-system-decisions",
-    "game-feel-experience-design",
-    "game-experience-transfer",
     "experience-theory-deconstruction",
+    "game-design-planning",
+    "game-experience-transfer",
+    "game-feel-experience-design",
+    "game-numerical-design",
+    "game-system-decisions",
     "phantom-blade-zero-combat-feel",
-    "game-numerical-design"
+    "ui-layout-design"
   ],
   "files": [
     {
-      "path": "game_design_mcp/data/skills/ui-layout-design/SKILL.md",
-      "sha256": "7da7892e775a279b5c30ac31602f0364b775eeee78c5f90a1d48f9851df46730"
+      "path": "game_design_mcp/data/skills/experience-theory-deconstruction/agents/openai.yaml",
+      "sha256": "80f6497d08ed25234b177d4a96f292ff7aa87b9e5724121e528387d04980e61b"
     },
     {
-      "path": "game_design_mcp/data/skills/game-system-decisions/SKILL.md",
-      "sha256": "1f318edcb385d3966a1ea77918741666e5197de675cdee0629a3e9d2236012ae"
+      "path": "game_design_mcp/data/skills/experience-theory-deconstruction/references/method.md",
+      "sha256": "da84bcfafbb51085d02c7485ec9829ae0ea227455ebaa6f9bb988bb814eda776"
     },
     {
-      "path": "game_design_mcp/data/skills/game-system-decisions/references/meaningful-play.md",
-      "sha256": "8c4ffd9bc8b2ba964854bbca830bb6de726b2c3f1d7eacf82e9819e7e4280ec0"
+      "path": "game_design_mcp/data/skills/experience-theory-deconstruction/SKILL.md",
+      "sha256": "9f17b9b70be041a1676e3c442d4850bda5075a16d8497885fdd218f789936930"
     },
     {
-      "path": "game_design_mcp/data/skills/game-system-decisions/references/playtest-template.md",
-      "sha256": "fb8bc6ef45eeca8d2f6ee8dc7a21fee1ad5a24cf621af643a6ea7c003e41f152"
+      "path": "game_design_mcp/data/skills/game-design-planning/assets/example-session.json",
+      "sha256": "2f4c247f26eb5ec6a246f055b7cf5e64ac2964529f09271997fa9358955cc06f"
     },
     {
-      "path": "game_design_mcp/data/skills/game-system-decisions/references/source-map.md",
-      "sha256": "428b7823198916a98b4081bc02a3c2e313d1eea25becdcfd39ceb3f92f15c576"
+      "path": "game_design_mcp/data/skills/game-design-planning/references/method.md",
+      "sha256": "4b7f54b32c15c8ca5410e869b8041eadfedc420c5154ce8c2508025029243f2a"
     },
     {
-      "path": "game_design_mcp/data/skills/game-system-decisions/references/system-design.md",
-      "sha256": "cc85345cf1eb7905b4d382f86ea452c59e9eef1acd6ed5faa3c4c1e05467130a"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-feel-experience-design/SKILL.md",
-      "sha256": "11cbe26ac98d99d8b5f456214a4923776875f010a7838d3d736b92d0cafafc3a"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/experience.md",
-      "sha256": "9ccd7329577be3bde296f7fbaf1423a85f5a56a82cb779720ed89194826be8cb"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/experiment-template.md",
-      "sha256": "83c263494e68323dea328e1e8e2503dc08c371448d97d746743f1eb34061790c"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/interaction-vfx.md",
-      "sha256": "3f32320db60b3e201c38e5788a62edd6e73fb8c898738c4781bcca31e7a62a50"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/sources.md",
-      "sha256": "60e56613e7eda89872c3121019d77c84565695d46270566e410255bac4a1beb6"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-experience-transfer/SKILL.md",
-      "sha256": "64ee6fe8ed7cdbe71fe323a19610b5e8dae8d629802d22f8ea124aa62ee35c58"
+      "path": "game_design_mcp/data/skills/game-design-planning/SKILL.md",
+      "sha256": "60c60c7600a6a651f5393a5a819669a8b9b1f7c1e8f4d473a230a9e79bf2edb8"
     },
     {
       "path": "game_design_mcp/data/skills/game-experience-transfer/agents/openai.yaml",
@@ -83,20 +60,60 @@
       "sha256": "7f3b0193355e59d6ce3e3a980349c8125cb166370241645a9468dff215bb7dd6"
     },
     {
-      "path": "game_design_mcp/data/skills/experience-theory-deconstruction/SKILL.md",
-      "sha256": "d40eca856ad7ed716744a50af6b2c48526725b78c8666a944fc80fe87d288f41"
+      "path": "game_design_mcp/data/skills/game-experience-transfer/SKILL.md",
+      "sha256": "e2a0de1f8a559051b603308d0e2172417d60926e8220a774641fcf53c82b0f0e"
     },
     {
-      "path": "game_design_mcp/data/skills/experience-theory-deconstruction/agents/openai.yaml",
-      "sha256": "80f6497d08ed25234b177d4a96f292ff7aa87b9e5724121e528387d04980e61b"
+      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/experience.md",
+      "sha256": "9ccd7329577be3bde296f7fbaf1423a85f5a56a82cb779720ed89194826be8cb"
     },
     {
-      "path": "game_design_mcp/data/skills/experience-theory-deconstruction/references/method.md",
-      "sha256": "da84bcfafbb51085d02c7485ec9829ae0ea227455ebaa6f9bb988bb814eda776"
+      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/experiment-template.md",
+      "sha256": "83c263494e68323dea328e1e8e2503dc08c371448d97d746743f1eb34061790c"
     },
     {
-      "path": "game_design_mcp/data/skills/phantom-blade-zero-combat-feel/SKILL.md",
-      "sha256": "5820181efa826b4d0af28cf74f4ee6596545ff4c1b4e2bc82c59f5363899b903"
+      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/interaction-vfx.md",
+      "sha256": "3f32320db60b3e201c38e5788a62edd6e73fb8c898738c4781bcca31e7a62a50"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-feel-experience-design/references/sources.md",
+      "sha256": "60e56613e7eda89872c3121019d77c84565695d46270566e410255bac4a1beb6"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-feel-experience-design/SKILL.md",
+      "sha256": "11cbe26ac98d99d8b5f456214a4923776875f010a7838d3d736b92d0cafafc3a"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-numerical-design/references/演算示例.md",
+      "sha256": "9f7495af6731065f357227034fb2f39a1bee93accb7db25daa759501bf44635a"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-numerical-design/references/课程观点.md",
+      "sha256": "95e132c2df6043e2d73c36fc7c31309447266f2ecf2cac3e0d4b9d9564861c72"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-numerical-design/SKILL.md",
+      "sha256": "321abd06764419a26f5e82887f8b69d1b9bf3125d0741b481512e610700ce0a4"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-system-decisions/references/meaningful-play.md",
+      "sha256": "8c4ffd9bc8b2ba964854bbca830bb6de726b2c3f1d7eacf82e9819e7e4280ec0"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-system-decisions/references/playtest-template.md",
+      "sha256": "fb8bc6ef45eeca8d2f6ee8dc7a21fee1ad5a24cf621af643a6ea7c003e41f152"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-system-decisions/references/source-map.md",
+      "sha256": "428b7823198916a98b4081bc02a3c2e313d1eea25becdcfd39ceb3f92f15c576"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-system-decisions/references/system-design.md",
+      "sha256": "cc85345cf1eb7905b4d382f86ea452c59e9eef1acd6ed5faa3c4c1e05467130a"
+    },
+    {
+      "path": "game_design_mcp/data/skills/game-system-decisions/SKILL.md",
+      "sha256": "1f318edcb385d3966a1ea77918741666e5197de675cdee0629a3e9d2236012ae"
     },
     {
       "path": "game_design_mcp/data/skills/phantom-blade-zero-combat-feel/agents/openai.yaml",
@@ -119,16 +136,12 @@
       "sha256": "c6e4a28d6add345eb549030f241fb02b2b8fc67d696132bb49ca135319462fce"
     },
     {
-      "path": "game_design_mcp/data/skills/game-numerical-design/SKILL.md",
-      "sha256": "321abd06764419a26f5e82887f8b69d1b9bf3125d0741b481512e610700ce0a4"
+      "path": "game_design_mcp/data/skills/phantom-blade-zero-combat-feel/SKILL.md",
+      "sha256": "5820181efa826b4d0af28cf74f4ee6596545ff4c1b4e2bc82c59f5363899b903"
     },
     {
-      "path": "game_design_mcp/data/skills/game-numerical-design/references/演算示例.md",
-      "sha256": "9f7495af6731065f357227034fb2f39a1bee93accb7db25daa759501bf44635a"
-    },
-    {
-      "path": "game_design_mcp/data/skills/game-numerical-design/references/课程观点.md",
-      "sha256": "95e132c2df6043e2d73c36fc7c31309447266f2ecf2cac3e0d4b9d9564861c72"
+      "path": "game_design_mcp/data/skills/ui-layout-design/SKILL.md",
+      "sha256": "7da7892e775a279b5c30ac31602f0364b775eeee78c5f90a1d48f9851df46730"
     }
   ],
   "policy": "Skill instructions only; original books, private attachments, credentials and machine paths excluded"

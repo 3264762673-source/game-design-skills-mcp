@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Literal
 import math
 from pydantic import BaseModel, ConfigDict, Field
+from . import __version__
 
 DATA = Path(__file__).parent / "data"
 
@@ -77,7 +78,7 @@ def read_skill(skill_id: str, document: str = "SKILL.md"):
     return (DATA / "skills" / skill_id / document).read_text(encoding="utf-8")
 
 def effect_bundle(spec: EffectSpec):
-    return {"version": "0.1.0", "config": spec.model_dump(),
+    return {"version": __version__, "effect_runtime_version": "0.1.0", "config": spec.model_dump(),
             "files": {name: (DATA / "runtime" / name).read_text(encoding="utf-8")
                       for name in ["effects.js", "demo.html"]},
             "usage": "Save both files together, open demo.html; or load effects.js as a script and call GameFeedback.createFeedback(canvas).emit(event, config).",

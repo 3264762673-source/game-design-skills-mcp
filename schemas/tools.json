@@ -577,5 +577,551 @@
     "annotations": null,
     "meta": null,
     "execution": null
+  },
+  {
+    "name": "start_design_interview",
+    "title": null,
+    "description": "Create an experience-theory decision tree and the current question frontier.",
+    "inputSchema": {
+      "properties": {
+        "original_request": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Original Request",
+          "type": "string"
+        },
+        "session_id": {
+          "default": "design-001",
+          "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+          "title": "Session Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "original_request"
+      ],
+      "title": "start_design_interviewArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "advance_design_interview",
+    "title": null,
+    "description": "Apply one answer round; reopen descendants on revision. Confirm only after human review.",
+    "inputSchema": {
+      "$defs": {
+        "Change": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "minimum": 2,
+              "title": "Revision",
+              "type": "integer"
+            },
+            "decision_id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Decision Id",
+              "type": "string"
+            },
+            "previous": {
+              "$ref": "#/$defs/Decision"
+            },
+            "current": {
+              "$ref": "#/$defs/Decision"
+            }
+          },
+          "required": [
+            "revision",
+            "decision_id",
+            "previous",
+            "current"
+          ],
+          "title": "Change",
+          "type": "object"
+        },
+        "Decision": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Id",
+              "type": "string"
+            },
+            "topic": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Topic",
+              "type": "string"
+            },
+            "question": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Question",
+              "type": "string"
+            },
+            "recommendation": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Recommendation",
+              "type": "string"
+            },
+            "depends_on": {
+              "items": {
+                "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+                "type": "string"
+              },
+              "maxItems": 40,
+              "title": "Depends On",
+              "type": "array"
+            },
+            "status": {
+              "default": "open",
+              "enum": [
+                "open",
+                "resolved",
+                "assumed"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "maxLength": 6000,
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Answer"
+            },
+            "basis": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "user",
+                    "project_evidence",
+                    "hypothesis"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Basis"
+            },
+            "locator": {
+              "anyOf": [
+                {
+                  "maxLength": 6000,
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Locator"
+            }
+          },
+          "required": [
+            "id",
+            "topic",
+            "question",
+            "recommendation"
+          ],
+          "title": "Decision",
+          "type": "object"
+        },
+        "DesignAnswer": {
+          "additionalProperties": false,
+          "properties": {
+            "decision_id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Decision Id",
+              "type": "string"
+            },
+            "answer": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Answer",
+              "type": "string"
+            },
+            "basis": {
+              "enum": [
+                "user",
+                "project_evidence",
+                "hypothesis"
+              ],
+              "title": "Basis",
+              "type": "string"
+            },
+            "locator": {
+              "anyOf": [
+                {
+                  "maxLength": 6000,
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Locator"
+            }
+          },
+          "required": [
+            "decision_id",
+            "answer",
+            "basis"
+          ],
+          "title": "DesignAnswer",
+          "type": "object"
+        },
+        "DesignSession": {
+          "additionalProperties": false,
+          "properties": {
+            "session_id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Session Id",
+              "type": "string"
+            },
+            "revision": {
+              "default": 1,
+              "minimum": 1,
+              "title": "Revision",
+              "type": "integer"
+            },
+            "original_request": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Original Request",
+              "type": "string"
+            },
+            "decisions": {
+              "items": {
+                "$ref": "#/$defs/Decision"
+              },
+              "maxItems": 40,
+              "minItems": 1,
+              "title": "Decisions",
+              "type": "array"
+            },
+            "history": {
+              "items": {
+                "$ref": "#/$defs/Change"
+              },
+              "maxItems": 2000,
+              "title": "History",
+              "type": "array"
+            },
+            "confirmed_revision": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Confirmed Revision"
+            },
+            "explore_assumptions": {
+              "default": false,
+              "title": "Explore Assumptions",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "session_id",
+            "original_request",
+            "decisions"
+          ],
+          "title": "DesignSession",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "session": {
+          "$ref": "#/$defs/DesignSession"
+        },
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/DesignAnswer"
+          },
+          "title": "Answers",
+          "type": "array"
+        },
+        "confirm_revision": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confirm Revision"
+        }
+      },
+      "required": [
+        "session",
+        "answers"
+      ],
+      "title": "advance_design_interviewArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "compile_game_design",
+    "title": null,
+    "description": "Compile supplied decisions into a draft or confirmed spec; never certifies actual player experience.",
+    "inputSchema": {
+      "$defs": {
+        "Change": {
+          "additionalProperties": false,
+          "properties": {
+            "revision": {
+              "minimum": 2,
+              "title": "Revision",
+              "type": "integer"
+            },
+            "decision_id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Decision Id",
+              "type": "string"
+            },
+            "previous": {
+              "$ref": "#/$defs/Decision"
+            },
+            "current": {
+              "$ref": "#/$defs/Decision"
+            }
+          },
+          "required": [
+            "revision",
+            "decision_id",
+            "previous",
+            "current"
+          ],
+          "title": "Change",
+          "type": "object"
+        },
+        "Decision": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Id",
+              "type": "string"
+            },
+            "topic": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Topic",
+              "type": "string"
+            },
+            "question": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Question",
+              "type": "string"
+            },
+            "recommendation": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Recommendation",
+              "type": "string"
+            },
+            "depends_on": {
+              "items": {
+                "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+                "type": "string"
+              },
+              "maxItems": 40,
+              "title": "Depends On",
+              "type": "array"
+            },
+            "status": {
+              "default": "open",
+              "enum": [
+                "open",
+                "resolved",
+                "assumed"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "maxLength": 6000,
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Answer"
+            },
+            "basis": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "user",
+                    "project_evidence",
+                    "hypothesis"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Basis"
+            },
+            "locator": {
+              "anyOf": [
+                {
+                  "maxLength": 6000,
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Locator"
+            }
+          },
+          "required": [
+            "id",
+            "topic",
+            "question",
+            "recommendation"
+          ],
+          "title": "Decision",
+          "type": "object"
+        },
+        "DesignSession": {
+          "additionalProperties": false,
+          "properties": {
+            "session_id": {
+              "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+              "title": "Session Id",
+              "type": "string"
+            },
+            "revision": {
+              "default": 1,
+              "minimum": 1,
+              "title": "Revision",
+              "type": "integer"
+            },
+            "original_request": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Original Request",
+              "type": "string"
+            },
+            "decisions": {
+              "items": {
+                "$ref": "#/$defs/Decision"
+              },
+              "maxItems": 40,
+              "minItems": 1,
+              "title": "Decisions",
+              "type": "array"
+            },
+            "history": {
+              "items": {
+                "$ref": "#/$defs/Change"
+              },
+              "maxItems": 2000,
+              "title": "History",
+              "type": "array"
+            },
+            "confirmed_revision": {
+              "anyOf": [
+                {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Confirmed Revision"
+            },
+            "explore_assumptions": {
+              "default": false,
+              "title": "Explore Assumptions",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "session_id",
+            "original_request",
+            "decisions"
+          ],
+          "title": "DesignSession",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "session": {
+          "$ref": "#/$defs/DesignSession"
+        }
+      },
+      "required": [
+        "session"
+      ],
+      "title": "compile_game_designArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
   }
 ]

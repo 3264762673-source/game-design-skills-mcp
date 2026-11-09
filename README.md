@@ -1,8 +1,33 @@
-# Game Design Skills MCP · v0.1.0
+# Game Design Skills MCP · v0.2.0
 
 把游戏设计方法变成可调用的能力：**技能文档 + 严格参数 + 执行代码 + 效果示例 + 验收测试**。
 
-包含 7 个技能：UI 布局、游戏系统、游戏手感、体验迁移、体验论拆解、影之刃零公开资料手感分析、游戏数值设计。技能目录位于 `game_design_mcp/data/skills/`，可单独复制到支持 SKILL.md 的客户端。公开版移除了本机路径，未包含原书或私人附件。
+包含 8 个技能：体验论策划追问、UI 布局、游戏系统、游戏手感、体验迁移、体验论拆解、影之刃零公开资料手感分析、游戏数值设计。技能目录位于 `game_design_mcp/data/skills/`，可单独复制到支持 SKILL.md 的客户端。公开版移除了本机路径，未包含原书或私人附件。
+
+## 策划：grill-me × 体验论
+
+新增 `game-design-planning`：用决策依赖组织追问，用体验论决定问题内容，最后输出可实施的策划规格。
+
+`范围 → 体验句 → {概念诠释、玩家能动性} → 必要条件 → 行为反馈 → 最小闭环 → 否定实验`
+
+只问前提已解决的问题；概念诠释和能动性可同轮讨论。AI 核查项目事实，用户决定取舍。修改上游回答后，下游答案保留于历史、重新开放，旧确认也失效。未回答完可以交付草案；问答完成不代表体验已验证。
+
+```text
+使用 $game-design-planning，结合 grill-me 和体验论审视我的策划。
+目标是让玩家读懂强敌，通过自己的应对夺回主动权。
+先核查已有方案，再逐轮追问当前可决定的分歧。
+最后输出规则、反馈、最小闭环、反例和待测项，不自动制作游戏。
+```
+
+[完整虚构策划示例](examples/planning-spec.md) · [技能入口](game_design_mcp/data/skills/game-design-planning/SKILL.md)
+
+调用顺序：
+
+1. `start_design_interview({original_request, session_id})` 返回 session 和当前问题 frontier。
+2. `advance_design_interview({session, answers:[{decision_id, answer, basis, locator?}]})` 返回新 session、下一轮问题和失效节点。保存完整返回 session，下一轮传回。
+3. `compile_game_design({session})` 返回策划 Markdown 及 draft / awaiting_confirmation / confirmed 状态。先向用户展示规格，再单独调用 advance，传 answers 空数组及 confirm_revision 当前修订号，记录明确共识。不能把推荐答案当成用户回复。
+
+服务不保存会话；调用方负责记录。依赖和状态由代码检查，答案的语义充分性、来源真假仍需 AI 和用户核查。缺少默认核心章节时编译结果保持 draft。ready_for_implementation 只表示当前输入声明的策划共识，实际实现仍受原授权范围约束。无需连接 MCP 也可独立使用技能。
 
 ## 安装与运行
 
@@ -40,8 +65,11 @@ Windows 使用 `C:/absolute/path/.venv/Scripts/game-design-skills-mcp.exe`。这
 | `validate_decision_card` | DecisionCard | 八字段完整性及证据引用检查 | 不判断证据真假，不证明方案好玩 |
 | `audit_system` | SystemSpec | 不可达、死路、歧义和未知状态 | 有限确定状态图，不含条件／并发语义 |
 | `audit_transfer` | TransferSpec | 部分对应、缺失、未知映射 | 体验是否成功仍需人类判断 |
+| `start_design_interview` | 请求与会话 ID | 体验论决策树与当前问题 | 固定起始结构，非自动语义分析 |
+| `advance_design_interview` | session、answers、可选确认修订 | 更新问答、依赖与历史 | 不认证发言者或证据真假 |
+| `compile_game_design` | session | 策划规格与待决项 | 编译已提供答案，不证明好玩 |
 
-输入 JSON Schema 来自 `game_design_mcp/core.py` 的 Pydantic 模型，并发布为 `schemas/tools.json`。所有规格模型拒绝额外字段和非有限数值；枚举和范围在运行时校验。错误由 MCP 返回，调用方修正输入后再试。
+输入 JSON Schema 来自 `game_design_mcp/core.py` 与 `planning.py` 的 Pydantic 模型，并发布为 `schemas/tools.json`。所有规格模型拒绝额外字段和非有限数值；枚举和范围在运行时校验。错误由 MCP 返回，调用方修正输入后再试。
 
 ### 调用示例
 
@@ -78,7 +106,7 @@ python -m pip install build
 python -m build
 ```
 
-测试覆盖真实 stdio 初始化及工具调用、越界拒绝、路径穿越、数值击数与首击、图结构、证据状态、对比度、特效去重／容量／生命周期／减效。自动测试不代替真人试玩。CI 在 Linux 与 Windows 运行；发布包包含 Python wheel、源码压缩包和浏览器演示。
+测试覆盖真实 stdio 初始化及 11 个工具调用、策划依赖/原子性/确认失效/假设边界、越界拒绝、路径穿越、数值击数与首击、图结构、证据状态、对比度、特效去重／容量／生命周期／减效。自动测试不代替真人试玩。CI 在 Linux 与 Windows 运行；发布包包含 Python wheel、源码压缩包和浏览器演示。
 
 ## 来源与权利
 
@@ -86,6 +114,8 @@ python -m build
 
 本版本尚未选择统一开源许可证；公开仓库不等于授权所有内容无条件再分发。使用第三方依赖时遵循其许可证。不要把企业内部项目或新的原始资料直接放入公开技能目录。
 
-## v0.1.0 的边界
+## 当前版本的边界
 
-这是一套可运行的基础能力包。7 个技能均可被发现、读取；其中一部分步骤已由确定性工具支撑，创意分析仍由调用模型完成。不是“每个技能自动生成完整游戏”，也未宣称所有设计判断可机器验证。后续可扩展 Unity／UE 事件适配、声音与镜头仲裁、更丰富的 UI 组件以及真实项目回归案例。
+这是一套可运行的基础能力包。8 个技能均可被发现、读取；其中一部分步骤已由确定性工具支撑，创意分析仍由调用模型完成。不是“每个技能自动生成完整游戏”，也未宣称所有设计判断可机器验证。后续可扩展 Unity／UE 事件适配、声音与镜头仲裁、更丰富的 UI 组件以及真实项目回归案例。
+
+发布维护：修改源码后运行 `python scripts/update_metadata.py` 更新 Schema 与清单。测试、构建、提交并创建版本标签后，运行 `python scripts/package_release.py` 生成发布 ZIP 与版本独立校验和。v0.2.0 新增策划能力，三种效果的运行时仍为 0.1.0。
