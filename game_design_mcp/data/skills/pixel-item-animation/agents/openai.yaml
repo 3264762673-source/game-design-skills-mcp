@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素物品动效"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素物品动效制作与评审"
+  default_prompt: "使用 $pixel-item-animation，设计像素宝箱与掉落物的动效，给出开启、落地、拾取、容量已满和动画中断时的状态与结算规则。"

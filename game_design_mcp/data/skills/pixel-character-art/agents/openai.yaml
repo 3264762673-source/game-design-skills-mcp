@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素人物设计美术"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素人物设计美术制作与评审"
+  default_prompt: "使用 $pixel-character-art，为俯视角像素游戏设计三类角色，先比较实际尺寸的轮廓和身份差异，再给出可制作的角色规格。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素物品美术"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素物品美术制作与评审"
+  default_prompt: "使用 $pixel-item-art，制作一组像素道具规范，区分类别、材质和状态，并检验它们在背包小格中会不会混淆。"

@@ -1,23 +1,25 @@
-# v0.2.0 · grill-me × 体验论策划
+# v0.3.0 · 九个像素游戏制作 Skills
 
-新增 game-design-planning，将决策依赖追问、概念诠释、玩家能动性、行为反馈及反例检查编译为策划规格。
+新增人物、场景、物品、UI 布局、图标按钮、页面交互、特效动效、人物动作、物品动效九个独立 Skill。每项包含简短入口、八字段决策卡、制作交付规格和可追溯的来源／案例记录。
 
-- 8 个 Skills，11 个 MCP 工具；保留原有接口和 3 种 Canvas 效果。
-- 新工具：start_design_interview、advance_design_interview、compile_game_design。
-- 修改上游答案后，重新开放下游，保留历史并使旧确认失效。
-- 草案、待确认和已确认分开；假设不是共识，未试玩仍为待测。
-- 包含完整虚构示例、Schema、测试及发布脚本。
+- 17 个 Skills，11 个 MCP 工具；通过现有 get_skill 读取新技能及参考文档。
+- 新增 27 张条件决策卡，保留反例、收窄结果与工程待测状态。
+- 三组研究先记录候选，再用其他作品检查；附初版快照、完整报告与人类使用指南。
+- 新增文档不附原书、第三方游戏原图、论文全文或视频。
+- 原有策划访谈、三种 Canvas 效果与其他执行工具行为不变。
 
 ## 使用
 
 Python 3.11+ 安装本版 wheel，再启动 game-design-skills-mcp；客户端配置见 README。
-独立技能下载 skills-0.2.0.zip，将 game-design-planning 文件夹复制到客户端技能目录。
-先调用 start_design_interview，保存 session，通过 advance_design_interview 更新，再用 compile_game_design 输出规格。
+独立技能下载 skills-0.3.0.zip，将需要的 pixel-* 文件夹复制到客户端技能目录。
+例如调用 $pixel-item-animation，或通过 get_skill 读取其 SKILL.md、references/rules.md、references/evidence.md。
 
 ## 验证边界
 
-自动测试覆盖真实 stdio、全部工具、依赖及状态约束。服务按输入生成问题结构、编译答案，不认证其来源、不验证自然语言语义，不替代设计判断或真人试玩。
+跨作品案例检查不等于因果证明或真人试玩。静态截图不能证明焦点、命中区、碰撞或帧时序；工程提案与有限案例支持分别标注。视频内容／高赞高收藏核验及 Pinterest 原作链仍有缺口。新增技能不是九个自动绘图或动画引擎，实际制作由客户端已有工具执行。
+
+自动测试检查 MCP 和现有运行代码；技能格式、引用与打包另行检查，不把这些检查当设计有效性证明。
 
 ## 兼容性
 
-新增接口，旧调用方式不变。create_effect_bundle 的 version 表示包版本，新增 effect_runtime_version 标明未改动的 0.1.0 运行时。没有改写 v0.1.0 标签或发布附件。
+工具接口和旧调用方式不变。create_effect_bundle 的 version 表示包版本，effect_runtime_version 仍为 0.1.0。此前发布标签与附件保持原样；本版本未新增 Unity/UE 绘图或动画运行时。

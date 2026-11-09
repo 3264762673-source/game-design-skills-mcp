@@ -1,8 +1,20 @@
-# Game Design Skills MCP · v0.2.0
+# Game Design Skills MCP · v0.3.0
 
 把游戏设计方法变成可调用的能力：**技能文档 + 严格参数 + 执行代码 + 效果示例 + 验收测试**。
 
-包含 8 个技能：体验论策划追问、UI 布局、游戏系统、游戏手感、体验迁移、体验论拆解、影之刃零公开资料手感分析、游戏数值设计。技能目录位于 `game_design_mcp/data/skills/`，可单独复制到支持 SKILL.md 的客户端。公开版移除了本机路径，未包含原书或私人附件。
+包含 17 个技能：原有 8 个游戏设计技能，加上人物、场景、物品、UI 布局、图标按钮、页面交互、特效动效、人物动作、物品动效 9 个像素游戏技能。技能目录位于 `game_design_mcp/data/skills/`，可单独复制到支持 SKILL.md 的客户端。公开版移除了本机路径，未包含原书或私人附件。
+
+## 像素游戏制作技能
+
+本版通过一手开发资料、论文和跨作品案例检查，形成带适用条件的制作规则。每个像素技能包含入口、八字段决策卡和来源／检验记录，分别标明有限支持、收窄与工程待测。
+
+[九个技能的选择与调用](docs/pixel-skills-guide.md) · [研究方法与证据边界](docs/pixel-research-method.md) · [跨作品研究记录](docs/research/pixel-research-index.md)
+
+```json
+{"name":"get_skill","arguments":{"skill_id":"pixel-item-animation","document":"SKILL.md"}}
+```
+
+按入口提示继续读取 `references/rules.md` 或 `references/evidence.md`。也可将独立技能文件夹安装到客户端，直接调用 `$pixel-item-animation`。新增文档通过现有 MCP 读取接口使用，工具仍为 11 个；没有新增九个绘图／动画生成引擎。
 
 ## 策划：grill-me × 体验论
 
@@ -116,6 +128,6 @@ python -m build
 
 ## 当前版本的边界
 
-这是一套可运行的基础能力包。8 个技能均可被发现、读取；其中一部分步骤已由确定性工具支撑，创意分析仍由调用模型完成。不是“每个技能自动生成完整游戏”，也未宣称所有设计判断可机器验证。后续可扩展 Unity／UE 事件适配、声音与镜头仲裁、更丰富的 UI 组件以及真实项目回归案例。
+这是一套可运行的基础能力包。17 个技能均可被发现、读取；其中一部分步骤已由确定性工具支撑，创意分析仍由调用模型完成。像素技能的案例检查不是玩家实验；静态截图不证明焦点、命中区或时序。实际资产制作仍依赖客户端现有绘图、引擎和代码工具。后续可扩展 Unity／UE 事件适配、声音与镜头仲裁、更丰富的 UI 组件以及真实项目回归案例。
 
-发布维护：修改源码后运行 `python scripts/update_metadata.py` 更新 Schema 与清单。测试、构建、提交并创建版本标签后，运行 `python scripts/package_release.py` 生成发布 ZIP 与版本独立校验和。v0.2.0 新增策划能力，三种效果的运行时仍为 0.1.0。
+发布维护：修改源码后运行 `python scripts/update_metadata.py` 更新 Schema 与清单。测试、构建、提交并创建版本标签后，运行 `python scripts/package_release.py` 生成发布 ZIP 与版本独立校验和。v0.3.0 新增像素技能文档，三种效果的运行时仍为 0.1.0。

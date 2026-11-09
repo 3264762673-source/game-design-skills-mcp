@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素特效与动效"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素特效与动效制作与评审"
+  default_prompt: "使用 $pixel-vfx-motion，设计像素魔法命中特效，区分伤害判定、必要范围提示和装饰层，并给出高密度与减效方案。"

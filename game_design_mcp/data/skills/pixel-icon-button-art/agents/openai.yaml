@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素图标与小按钮美术"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素图标与小按钮美术制作与评审"
+  default_prompt: "使用 $pixel-icon-button-art，设计一套像素小按钮，给出图标语义、状态板和点击区域，检验相邻按钮及相似符号。"

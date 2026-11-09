@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素场景美术"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素场景美术制作与评审"
+  default_prompt: "使用 $pixel-environment-art，检查这个像素场景的可走区域和背景层次，给出地块连接、遮挡和实际画面验收方案。"

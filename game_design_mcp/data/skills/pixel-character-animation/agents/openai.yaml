@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素人物动作"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素人物动作制作与评审"
+  default_prompt: "使用 $pixel-character-animation，为像素角色设计移动与攻击动作规范，明确姿态、接触点、状态切换和动画事件的对应关系。"

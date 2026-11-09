@@ -1,0 +1,4 @@
+interface:
+  display_name: "像素 UI 布局"
+  short_description: "以跨作品案例、条件规则和可撤回检查指导像素 UI 布局制作与评审"
+  default_prompt: "使用 $pixel-ui-layout，为像素游戏背包设计布局，支持长物品名与手柄焦点，明确世界、UI、字体的缩放策略。"

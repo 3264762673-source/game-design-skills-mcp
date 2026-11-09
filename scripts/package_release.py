@@ -1,6 +1,7 @@
 """Package the committed tag and exact built artifacts without changing Git state."""
 from pathlib import Path
 import hashlib
+import json
 import subprocess
 import sys
 import zipfile
@@ -8,6 +9,18 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from game_design_mcp import __version__ as version
+
+def check_skill_hashes(archive, entries, prefix=''):
+    """Reject archives whose actual skill bytes disagree with the public manifest."""
+    with zipfile.ZipFile(archive) as z:
+        for entry in entries:
+            name = entry['path'].removeprefix(prefix)
+            try:
+                contents = z.read(name)
+            except KeyError as exc:
+                raise RuntimeError(f'Missing skill file in {archive.name}: {name}') from exc
+            if hashlib.sha256(contents).hexdigest() != entry['sha256']:
+                raise RuntimeError(f'Skill checksum mismatch in {archive.name}: {name}')
 
 def main():
     if subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=ROOT).strip():
@@ -29,9 +42,13 @@ def main():
     source = dist/f'game-design-skills-mcp-{version}.zip'
     subprocess.run(['git','archive','--format=zip','--output='+str(source),f'v{version}'],cwd=ROOT,check=True)
     artifacts.append(source)
+    entries = json.loads((ROOT/'skill-manifest.json').read_text(encoding='utf-8'))['files']
+    check_skill_hashes(artifacts[0], entries)
+    check_skill_hashes(source, entries)
+    check_skill_hashes(dist/f'skills-{version}.zip', entries, 'game_design_mcp/data/skills/')
     # Version-specific checksums avoid overwriting historical release sums.
     sums=dist/f'SHA256SUMS-{version}.txt'
-    sums.write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in artifacts),encoding='utf-8')
+    sums.write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in artifacts),encoding='utf-8',newline='\n')
     for p in artifacts+[sums]:print(p.name)
 
 if __name__=='__main__':main()
