@@ -1,0 +1,4 @@
+interface:
+  display_name: "Godot 2D 制作与动效"
+  short_description: "按当前任务读取条件规则、交付规格和证据边界，减少重复指令"
+  default_prompt: "使用 $godot-2d-production，检查当前项目并按任务分支给出最小可验证修改。"

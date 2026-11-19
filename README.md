@@ -1,20 +1,28 @@
-# Game Design Skills MCP · v0.3.0
+# Game Design Skills MCP · v0.4.0
 
-把游戏设计方法变成可调用的能力：**技能文档 + 严格参数 + 执行代码 + 效果示例 + 验收测试**。
+游戏设计方法与可调用工具：11 个 Skill、13 个 MCP 工具，按需读取 15 个像素美术 / Godot 2D 主题。
 
-包含 17 个技能：原有 8 个游戏设计技能，加上人物、场景、物品、UI 布局、图标按钮、页面交互、特效动效、人物动作、物品动效 9 个像素游戏技能。技能目录位于 `game_design_mcp/data/skills/`，可单独复制到支持 SKILL.md 的客户端。公开版移除了本机路径，未包含原书或私人附件。
+## 像素美术与 Godot 制作
 
-## 像素游戏制作技能
+原九个像素技能归并为三个入口：
 
-本版通过一手开发资料、论文和跨作品案例检查，形成带适用条件的制作规则。每个像素技能包含入口、八字段决策卡和来源／检验记录，分别标明有限支持、收窄与工程待测。
+| 入口 | 覆盖范围 |
+|---|---|
+| pixel-art-direction | 人物、场景、物品美术 |
+| pixel-ui-design | 布局、图标按钮、页面交互 |
+| godot-2d-production | 特效、角色动作、物品动效，以及 Godot 2D 实现与交付 |
 
-[九个技能的选择与调用](docs/pixel-skills-guide.md) · [研究方法与证据边界](docs/pixel-research-method.md) · [跨作品研究记录](docs/research/pixel-research-index.md)
+原有八个游戏设计技能保留。27 张条件决策卡与证据等级保留；重复工作流程集中，细分内容由 MCP 按主题读取。
 
 ```json
-{"name":"get_skill","arguments":{"skill_id":"pixel-item-animation","document":"SKILL.md"}}
+{"name":"get_design_guidance","arguments":{"topic":"character-animation","stage":"implementation"}}
 ```
 
-按入口提示继续读取 `references/rules.md` 或 `references/evidence.md`。也可将独立技能文件夹安装到客户端，直接调用 `$pixel-item-animation`。新增文档通过现有 MCP 读取接口使用，工具仍为 11 个；没有新增九个绘图／动画生成引擎。
+先调用 `list_design_topics()` 查主题，再选择 `rules`（设计规则）、`implementation`（Godot 实现检查）或 `evidence`（来源）。每次仅返回一份文档。旧九个 `get_skill` ID 保留兼容；独立文件夹安装请换成三个新入口。
+
+[选择与调用](docs/pixel-skills-guide.md) · [迁移说明](docs/godomaster-consolidation.md) · [研究边界](docs/pixel-research-method.md)
+
+GodoMaster 参考内容已整理为原创 2D 摘要，并核对相关 Godot 官方文档。新增工具返回制作指导，不连接编辑器或直接生成像素资产；未进行 Godot 引擎实测。原有 Canvas 执行效果工具继续可用。公开包不包含原书、私人附件或第三方游戏原图。
 
 ## 策划：grill-me × 体验论
 
@@ -70,6 +78,8 @@ Windows 使用 `C:/absolute/path/.venv/Scripts/game-design-skills-mcp.exe`。这
 | MCP 工具 | 输入 | 输出和可执行能力 | 明确边界 |
 |---|---|---|---|
 | `list_capabilities` | 无 | 版本、技能及文档白名单 | 不扫描本机其它技能 |
+| `list_design_topics` | 无 | 列出 15 个制作主题 | 不加载全文 |
+| `get_design_guidance` | topic、stage | 一份规则、实现检查或证据 | 不控制编辑器或生成资产 |
 | `get_skill` | skill_id、document | 对应技能正文 | 只读白名单，拒绝路径穿越 |
 | `create_effect_bundle` | EffectSpec | 可保存运行的 JS、HTML 与参数 | impact/burst/pulse；Canvas 2D，不含 Unity/UE 适配 |
 | `generate_ui_tokens` | UiSpec | 响应式布局、卡片和按钮 CSS | 仅计算实色按钮文字对比，不认证整个页面 |
@@ -81,7 +91,7 @@ Windows 使用 `C:/absolute/path/.venv/Scripts/game-design-skills-mcp.exe`。这
 | `advance_design_interview` | session、answers、可选确认修订 | 更新问答、依赖与历史 | 不认证发言者或证据真假 |
 | `compile_game_design` | session | 策划规格与待决项 | 编译已提供答案，不证明好玩 |
 
-输入 JSON Schema 来自 `game_design_mcp/core.py` 与 `planning.py` 的 Pydantic 模型，并发布为 `schemas/tools.json`。所有规格模型拒绝额外字段和非有限数值；枚举和范围在运行时校验。错误由 MCP 返回，调用方修正输入后再试。
+输入 JSON Schema 来自 `game_design_mcp/core.py` 、`planning.py` 的 Pydantic 模型以及 `guidance.py` 的枚举，并发布为 `schemas/tools.json`。所有规格模型拒绝额外字段和非有限数值；枚举和范围在运行时校验。错误由 MCP 返回，调用方修正输入后再试。
 
 ### 调用示例
 
@@ -118,7 +128,7 @@ python -m pip install build
 python -m build
 ```
 
-测试覆盖真实 stdio 初始化及 11 个工具调用、策划依赖/原子性/确认失效/假设边界、越界拒绝、路径穿越、数值击数与首击、图结构、证据状态、对比度、特效去重／容量／生命周期／减效。自动测试不代替真人试玩。CI 在 Linux 与 Windows 运行；发布包包含 Python wheel、源码压缩包和浏览器演示。
+测试覆盖真实 stdio 初始化及 13 个工具调用、策划依赖/原子性/确认失效/假设边界、越界拒绝、路径穿越、数值击数与首击、图结构、证据状态、对比度、特效去重／容量／生命周期／减效。自动测试不代替真人试玩。CI 在 Linux 与 Windows 运行；发布包包含 Python wheel、源码压缩包和浏览器演示。
 
 ## 来源与权利
 
@@ -128,6 +138,6 @@ python -m build
 
 ## 当前版本的边界
 
-这是一套可运行的基础能力包。17 个技能均可被发现、读取；其中一部分步骤已由确定性工具支撑，创意分析仍由调用模型完成。像素技能的案例检查不是玩家实验；静态截图不证明焦点、命中区或时序。实际资产制作仍依赖客户端现有绘图、引擎和代码工具。后续可扩展 Unity／UE 事件适配、声音与镜头仲裁、更丰富的 UI 组件以及真实项目回归案例。
+这是一套可运行的基础能力包。11 个技能均可被发现、读取；其中一部分步骤已由确定性工具支撑，创意分析仍由调用模型完成。像素技能的案例检查不是玩家实验；静态截图不证明焦点、命中区或时序。实际资产制作仍依赖客户端现有绘图、引擎和代码工具。后续可扩展 Unity／UE 事件适配、声音与镜头仲裁、更丰富的 UI 组件以及真实项目回归案例。
 
-发布维护：修改源码后运行 `python scripts/update_metadata.py` 更新 Schema 与清单。测试、构建、提交并创建版本标签后，运行 `python scripts/package_release.py` 生成发布 ZIP 与版本独立校验和。v0.3.0 新增像素技能文档，三种效果的运行时仍为 0.1.0。
+发布维护：修改源码后运行 `python scripts/update_metadata.py` 更新 Schema 与清单。测试、构建、提交并创建版本标签后，运行 `python scripts/package_release.py` 生成发布 ZIP 与版本独立校验和。v0.4.0 精简入口并加入按主题路由，三种效果的运行时仍为 0.1.0。

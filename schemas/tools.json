@@ -15,6 +15,71 @@
     "execution": null
   },
   {
+    "name": "list_design_topics",
+    "title": null,
+    "description": "List compact pixel-art and Godot 2D topics without loading their documents.",
+    "inputSchema": {
+      "properties": {},
+      "title": "list_design_topicsArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "get_design_guidance",
+    "title": null,
+    "description": "Read one bounded topic document: rules, implementation checks or evidence.",
+    "inputSchema": {
+      "properties": {
+        "topic": {
+          "enum": [
+            "character-art",
+            "environment-art",
+            "item-art",
+            "ui-layout",
+            "icon-art",
+            "ui-interaction",
+            "vfx",
+            "character-animation",
+            "item-animation",
+            "godot-project",
+            "godot-assets",
+            "godot-scene-input",
+            "godot-animation",
+            "godot-ui",
+            "godot-export"
+          ],
+          "title": "Topic",
+          "type": "string"
+        },
+        "stage": {
+          "default": "rules",
+          "enum": [
+            "rules",
+            "implementation",
+            "evidence"
+          ],
+          "title": "Stage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "topic"
+      ],
+      "title": "get_design_guidanceArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
     "name": "get_skill",
     "title": null,
     "description": "Read an allowlisted bundled skill/reference. List capabilities for valid paths.",

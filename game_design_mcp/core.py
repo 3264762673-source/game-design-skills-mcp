@@ -72,6 +72,12 @@ def list_skills():
             for p in sorted((DATA / "skills").iterdir()) if p.is_dir()]
 
 def read_skill(skill_id: str, document: str = "SKILL.md"):
+    from .guidance import catalog
+    alias = catalog()['legacy_aliases'].get(skill_id)
+    if alias:
+        if document not in alias['documents']:
+            raise ValueError('Unknown legacy document')
+        skill_id, document = alias['skill_id'], alias['documents'][document]
     allowed = {s["id"]: s["files"] for s in list_skills()}
     if document not in allowed.get(skill_id, []):
         raise ValueError("Unknown skill or document; use list_skills first")

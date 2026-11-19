@@ -2,6 +2,8 @@
 from mcp.server.fastmcp import FastMCP
 from . import core
 from . import planning
+from . import guidance
+from .guidance import Topic, Stage
 from . import __version__
 from .planning import DesignSession, DesignAnswer, Text, NodeId
 from .core import EffectSpec, CombatSpec, DecisionCard, SystemSpec, TransferSpec, UiSpec
@@ -14,8 +16,20 @@ def list_capabilities() -> dict:
     return {"version": __version__, "skills": core.list_skills(), "tools": [
         "get_skill", "create_effect_bundle", "calculate_combat", "validate_decision_card",
         "audit_system", "audit_transfer", "generate_ui_tokens",
-        "start_design_interview", "advance_design_interview", "compile_game_design"],
+        "start_design_interview", "advance_design_interview", "compile_game_design",
+        "list_design_topics", "get_design_guidance"],
+        "legacy_aliases": guidance.catalog()['legacy_aliases'],
         "limitations": "Deterministic helpers, not autonomous game design or proof of fun"}
+
+@mcp.tool()
+def list_design_topics() -> dict:
+    """List compact pixel-art and Godot 2D topics without loading their documents."""
+    return guidance.list_topics()
+
+@mcp.tool()
+def get_design_guidance(topic: Topic, stage: Stage = 'rules') -> dict:
+    """Read one bounded topic document: rules, implementation checks or evidence."""
+    return guidance.get_guidance(topic, stage)
 
 @mcp.tool()
 def get_skill(skill_id: str, document: str = "SKILL.md") -> str:

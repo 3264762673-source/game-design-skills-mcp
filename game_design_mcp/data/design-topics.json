@@ -1,0 +1,222 @@
+{
+  "topics": [
+    {
+      "topic": "character-art",
+      "title": "人物造型",
+      "skill_id": "pixel-art-direction",
+      "rules": "references/character-art.md",
+      "implementation": "references/assets.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "environment-art",
+      "title": "场景地块",
+      "skill_id": "pixel-art-direction",
+      "rules": "references/environment-art.md",
+      "implementation": "references/assets.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "item-art",
+      "title": "物品造型",
+      "skill_id": "pixel-art-direction",
+      "rules": "references/item-art.md",
+      "implementation": "references/assets.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "ui-layout",
+      "title": "布局与尺度",
+      "skill_id": "pixel-ui-design",
+      "rules": "references/ui-layout.md",
+      "implementation": "references/ui.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "icon-art",
+      "title": "图标按钮",
+      "skill_id": "pixel-ui-design",
+      "rules": "references/icon-art.md",
+      "implementation": "references/ui.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "ui-interaction",
+      "title": "状态与导航",
+      "skill_id": "pixel-ui-design",
+      "rules": "references/ui-interaction.md",
+      "implementation": "references/ui.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "vfx",
+      "title": "特效动效",
+      "skill_id": "godot-2d-production",
+      "rules": "references/vfx.md",
+      "implementation": "references/animation.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "character-animation",
+      "title": "人物动作",
+      "skill_id": "godot-2d-production",
+      "rules": "references/character-animation.md",
+      "implementation": "references/animation.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "item-animation",
+      "title": "物品动效",
+      "skill_id": "godot-2d-production",
+      "rules": "references/item-animation.md",
+      "implementation": "references/animation.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/evidence.md"
+    },
+    {
+      "topic": "godot-project",
+      "title": "项目与验证",
+      "skill_id": "godot-2d-production",
+      "rules": "references/project.md",
+      "implementation": "references/project.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/engine-sources.md"
+    },
+    {
+      "topic": "godot-assets",
+      "title": "像素资产接入",
+      "skill_id": "godot-2d-production",
+      "rules": "references/assets.md",
+      "implementation": "references/assets.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/engine-sources.md"
+    },
+    {
+      "topic": "godot-scene-input",
+      "title": "场景/脚本/物理/输入",
+      "skill_id": "godot-2d-production",
+      "rules": "references/scene-input.md",
+      "implementation": "references/scene-input.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/engine-sources.md"
+    },
+    {
+      "topic": "godot-animation",
+      "title": "动画与动效",
+      "skill_id": "godot-2d-production",
+      "rules": "references/animation.md",
+      "implementation": "references/animation.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/engine-sources.md"
+    },
+    {
+      "topic": "godot-ui",
+      "title": "UI 实现",
+      "skill_id": "godot-2d-production",
+      "rules": "references/ui.md",
+      "implementation": "references/ui.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/engine-sources.md"
+    },
+    {
+      "topic": "godot-export",
+      "title": "导出交付",
+      "skill_id": "godot-2d-production",
+      "rules": "references/export.md",
+      "implementation": "references/export.md",
+      "implementation_skill": "godot-2d-production",
+      "evidence": "references/engine-sources.md"
+    }
+  ],
+  "legacy_aliases": {
+    "pixel-character-art": {
+      "skill_id": "pixel-art-direction",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/character-art.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-environment-art": {
+      "skill_id": "pixel-art-direction",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/environment-art.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-item-art": {
+      "skill_id": "pixel-art-direction",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/item-art.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-ui-layout": {
+      "skill_id": "pixel-ui-design",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/ui-layout.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-icon-button-art": {
+      "skill_id": "pixel-ui-design",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/icon-art.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-ui-interaction": {
+      "skill_id": "pixel-ui-design",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/ui-interaction.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-vfx-motion": {
+      "skill_id": "godot-2d-production",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/vfx.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-character-animation": {
+      "skill_id": "godot-2d-production",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/character-animation.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    },
+    "pixel-item-animation": {
+      "skill_id": "godot-2d-production",
+      "documents": {
+        "SKILL.md": "SKILL.md",
+        "references/rules.md": "references/item-animation.md",
+        "references/evidence.md": "references/evidence.md",
+        "agents/openai.yaml": "agents/openai.yaml"
+      }
+    }
+  }
+}

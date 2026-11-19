@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "skills": [
     "experience-theory-deconstruction",
     "game-design-planning",
@@ -7,16 +7,10 @@
     "game-feel-experience-design",
     "game-numerical-design",
     "game-system-decisions",
+    "godot-2d-production",
     "phantom-blade-zero-combat-feel",
-    "pixel-character-animation",
-    "pixel-character-art",
-    "pixel-environment-art",
-    "pixel-icon-button-art",
-    "pixel-item-animation",
-    "pixel-item-art",
-    "pixel-ui-interaction",
-    "pixel-ui-layout",
-    "pixel-vfx-motion",
+    "pixel-art-direction",
+    "pixel-ui-design",
     "ui-layout-design"
   ],
   "files": [
@@ -125,6 +119,58 @@
       "sha256": "a2950c2a8ba1e1564560b084fe86d78dbcfea1070e487a8205ddfe3e4f778b31"
     },
     {
+      "path": "game_design_mcp/data/skills/godot-2d-production/agents/openai.yaml",
+      "sha256": "af2929449b7c3c3b90eec9dbc043daee3aa2ae13182ce7f777c5062ea2cbb440"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/animation.md",
+      "sha256": "d38310cfbf2af0775914d8556357636b0dc0ca1ae637efba9a13c22f503d9e9b"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/assets.md",
+      "sha256": "cc85e286350cc0b2c0aa933e3c9ce5dc0f4e68c8c082008a802da8f2b647769e"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/character-animation.md",
+      "sha256": "921803d0d760e7765d18c1cbf2d222aee0d89478e2d72c0880850f6d8e66fb7d"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/engine-sources.md",
+      "sha256": "c74fddafbc622fbe313f0feb4ca18a30559bffc0e2cb828bf1a9c929f63be183"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/evidence.md",
+      "sha256": "e697257af48f0f9213ceb923953fe1c2f52d0355f8832734c080a841f9235421"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/export.md",
+      "sha256": "8a723ba90043cd6f8cd17932bd5cf288c460d3e6cfca39e9fef5562ecd2e1d19"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/item-animation.md",
+      "sha256": "d98e192f9faf1519bb4912d5b981516613cebf0ee3f8a4f3b0c9c1e422c26510"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/project.md",
+      "sha256": "2201cac5d50c984c62ba2145e53c311ce9b22229cb2103718918e2919c10474c"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/scene-input.md",
+      "sha256": "5daed94195e94d75503f5070992ce61aeced0f0448f524c7b676a046fcfffc39"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/ui.md",
+      "sha256": "047973938ebbb79143f1c3e3fd6afbed494516e314ab4e6d1ea4e2188d38e724"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/references/vfx.md",
+      "sha256": "ad57e97862df8977aae45685573eed905fd0aef316847fc8d3001808e60f024a"
+    },
+    {
+      "path": "game_design_mcp/data/skills/godot-2d-production/SKILL.md",
+      "sha256": "2df6549b5c9dac538c79f79293c8f41a5c4b766a417137e9bdac110efcaa66a0"
+    },
+    {
       "path": "game_design_mcp/data/skills/phantom-blade-zero-combat-feel/agents/openai.yaml",
       "sha256": "2e48a9d3b6bd2e0ba182fd22cbada3c1f1af78e42baf4cb4b61f04fdfa3627f9"
     },
@@ -149,148 +195,52 @@
       "sha256": "4c811e90cdd8829e9107e1a901c23413a0b2c867b9708785c6f92993ca11a26e"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-animation/agents/openai.yaml",
-      "sha256": "061d4c51829ad2a5f964e3e89e5d716e219cafb85b4663eadbee65f09686b1fb"
+      "path": "game_design_mcp/data/skills/pixel-art-direction/agents/openai.yaml",
+      "sha256": "af844dee3c2191227ad87e7f0fa0110ba96ba5aa45e2d5db8a3bcd69d5d1550e"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-animation/references/evidence.md",
-      "sha256": "a9ab9059802a0209a2c00528f1b45b52fd7a66f8a98425beef5ae92cc1e57e9d"
+      "path": "game_design_mcp/data/skills/pixel-art-direction/references/character-art.md",
+      "sha256": "9da5135d5a8f4c5e40417d41af074bc2326d1b143b0c7c22eb32bb02600e5858"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-animation/references/rules.md",
-      "sha256": "17d8d05050b41c31cfafc04a0abaa07dd88cec5ab80667c974d66ef717ef0bfc"
+      "path": "game_design_mcp/data/skills/pixel-art-direction/references/environment-art.md",
+      "sha256": "bb3d3d443a097aea30696be448ae45651858848d4cf372e6d33c84184efbcfa3"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-animation/SKILL.md",
-      "sha256": "6b56bdf3eb7f9aed2478bc24b15587051c94f0ad80d40e876fb700f4ec8d2e8d"
+      "path": "game_design_mcp/data/skills/pixel-art-direction/references/evidence.md",
+      "sha256": "32076c5f138620be15502a14c0f1095ca9cedf2ef93d0861c6706bc0872d8b78"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-art/agents/openai.yaml",
-      "sha256": "c4677e2120607072d484043684a8349548543d9599b7160a58f7d518278c4ceb"
+      "path": "game_design_mcp/data/skills/pixel-art-direction/references/item-art.md",
+      "sha256": "93d464b2aa04b9fb2d184708b2abe2b1c5eec4c7e938c04f98a77e893803c5f0"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-art/references/evidence.md",
-      "sha256": "5536072322981a05e9b5abaec7da2d5307686dc8522c31f721f474d0a09b374f"
+      "path": "game_design_mcp/data/skills/pixel-art-direction/SKILL.md",
+      "sha256": "7c2d52fb459d93df48820b1bfa576283a981d0003b0af81c1aa537260f298558"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-art/references/rules.md",
-      "sha256": "8a54cd5b4efcba1f2d5227a3253b58433c5577d3a3c651d789346be3f356137e"
+      "path": "game_design_mcp/data/skills/pixel-ui-design/agents/openai.yaml",
+      "sha256": "35f92d9f083413cd3e6ffa616b122de40d8ec573685da2219a7939358bcbcfad"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-character-art/SKILL.md",
-      "sha256": "be0341a7f695c561b930524ec1cc8e2977ab57e09e0710d3de3839bddaa3a2ce"
+      "path": "game_design_mcp/data/skills/pixel-ui-design/references/evidence.md",
+      "sha256": "4b8ef91f3724339de6df1df87fdbddd4c9338ac46dfc0e63f684e2649ab5d737"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-environment-art/agents/openai.yaml",
-      "sha256": "9a5dce6f7fc7242a210392d5fe44fd7ad66e456bfbac8080cdce75272d35981d"
+      "path": "game_design_mcp/data/skills/pixel-ui-design/references/icon-art.md",
+      "sha256": "ffaaba4ae94fb9574408e4b7004d6ee0cbf5e014071c3439f31d0a0cc263e73f"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-environment-art/references/evidence.md",
-      "sha256": "2c2e9bc478ddf2f8b96ec4c9078fca0c2342b5f2070ba71cf81288098347df05"
+      "path": "game_design_mcp/data/skills/pixel-ui-design/references/ui-interaction.md",
+      "sha256": "755fbb7dc6647ead7b2f9f1a62ddf227807a5ab6625c503231fc6e8906b65efd"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-environment-art/references/rules.md",
-      "sha256": "2ba704b2d32d300794895e1e8bc6b13ee54fe665a1f9278d2d9a8f56e6a22e20"
+      "path": "game_design_mcp/data/skills/pixel-ui-design/references/ui-layout.md",
+      "sha256": "38f76e8b406c8c7021bdb35bfcdd81c8b9664862819602b65341d92e43f8bc47"
     },
     {
-      "path": "game_design_mcp/data/skills/pixel-environment-art/SKILL.md",
-      "sha256": "cb2573fc17b55befcbae6e6858700c18c0a08e6a8e795a9d58d2f7bb5dd36419"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-icon-button-art/agents/openai.yaml",
-      "sha256": "9594274a7d81ad850fef488675391275a1e00a0017b972dfc9ed53ef48f4932d"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-icon-button-art/references/evidence.md",
-      "sha256": "aa5de3b2b6419ece5b2c59df9ed769ef48149df5039a73516fd261f5b9b81b52"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-icon-button-art/references/rules.md",
-      "sha256": "33ba07341569faacfc1c2030a5edff414f271fae157563361c1aa51f485d7bc6"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-icon-button-art/SKILL.md",
-      "sha256": "9ebb605377e05d9a602c9fb7204e3c3852d7ccf4cc50b4fc61ff01eca9e161da"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-animation/agents/openai.yaml",
-      "sha256": "05fedbf914d69b7e219fb6d59903644840a85550ac205cf626423a9a4e40f755"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-animation/references/evidence.md",
-      "sha256": "e452062e3770750af906e0790fdd942700a0284ebd0607bdb1cad12224b5ac51"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-animation/references/rules.md",
-      "sha256": "989a11f185d8db86991b8ec5291fb80708b40314c7944a957a7e4574772743ab"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-animation/SKILL.md",
-      "sha256": "c4b583703938f163d639ee796fb93135e179ee86ce70501e884689b94dd7ec38"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-art/agents/openai.yaml",
-      "sha256": "e8a1c9c8f4cd405b7be2190704055a59ad17836421caae380e0c0e9b06f8f95c"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-art/references/evidence.md",
-      "sha256": "95abc7c0b2e9a14818b1fb324ac0438baea86663c0710ab618053bbacf032205"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-art/references/rules.md",
-      "sha256": "befec43aa87feb53d01fdcb56b78131efc604aa87eff7a3824b5788ada28b2a0"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-item-art/SKILL.md",
-      "sha256": "13bc355aa44b6c6df3df96ccf4a6f8e8dd9b48f4eb658b316038da82a2b2d25e"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-interaction/agents/openai.yaml",
-      "sha256": "10b36300f5524152a46081869d1b20700094c6de67f8cf97ce3df34eb30792fb"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-interaction/references/evidence.md",
-      "sha256": "6f72027df4bfd68c0b2f71966703ae0ee829c98d930515faa3c2cf53896c6253"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-interaction/references/rules.md",
-      "sha256": "74ef83dd7dfefdd18af73a25ed07ced81b8feb11bb8a945e6f3aada236437ff9"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-interaction/SKILL.md",
-      "sha256": "668073991e002de46ef626205b82b6a6ef090d07cdb996179f09574d96815259"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-layout/agents/openai.yaml",
-      "sha256": "cf32115cdd6735f47230e7df4f948eed8797efe3d94b16b5be53646b28e81ec9"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-layout/references/evidence.md",
-      "sha256": "f08a686271c28d42f61a22e866b4547da866a9a82c8ca4a5a2faa5ec606af9a2"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-layout/references/rules.md",
-      "sha256": "e06c4afbc1b0bbd209309d20418150480195c6358faaebf454d01e0d4d67c483"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-ui-layout/SKILL.md",
-      "sha256": "cae1143bfa9627e05e7ac089702831066b88259872a24f907d29c323f1b4f053"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-vfx-motion/agents/openai.yaml",
-      "sha256": "1bd230da9a9b7220a70bd3c8c5e8efa686b10230dba3e5fdd9eb5e9332e9a3bc"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-vfx-motion/references/evidence.md",
-      "sha256": "d1e7844b316a1d22fa7607d0ff6926d6adbb8f1b40c57196227a950c5d316751"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-vfx-motion/references/rules.md",
-      "sha256": "8eb12e200c762c07b9bf66f4dd2fa7d47b6026922caf1337f5ecb3eb10115f79"
-    },
-    {
-      "path": "game_design_mcp/data/skills/pixel-vfx-motion/SKILL.md",
-      "sha256": "2b6cb81f8decbf4c26881a9ebcea41f275f022c721baab00d5eb8a27e7d6ffbb"
+      "path": "game_design_mcp/data/skills/pixel-ui-design/SKILL.md",
+      "sha256": "90e292955aa16f56fe6b123b01b13276b3a89afff04f94293eb19734400bd86d"
     },
     {
       "path": "game_design_mcp/data/skills/ui-layout-design/SKILL.md",

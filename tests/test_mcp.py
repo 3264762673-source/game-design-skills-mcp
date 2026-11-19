@@ -8,16 +8,17 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
             async with ClientSession(r,w) as client:
                 await client.initialize()
                 listed=await client.list_tools()
-                self.assertEqual(len(listed.tools),11)
+                self.assertEqual(len(listed.tools),13)
                 result=await client.call_tool('calculate_combat',{'spec':{'hp':100,'attack':30}})
                 self.assertFalse(result.isError)
                 bad=await client.call_tool('create_effect_bundle',{'spec':{'particles':999}})
                 self.assertTrue(bad.isError)
+                self.assertTrue((await client.call_tool('get_design_guidance',{'topic':'../secret'})).isError)
                 traversal=await client.call_tool('get_skill',{'skill_id':'../','document':'README.md'})
                 self.assertTrue(traversal.isError)
                 for name,args in [('list_capabilities',{}),('create_effect_bundle',{'spec':{}}),('generate_ui_tokens',{'spec':{}})]:
                     self.assertFalse((await client.call_tool(name,args)).isError)
-                valid=[('get_skill',{'skill_id':'ui-layout-design'}),
+                valid=[('list_design_topics',{}), ('get_design_guidance',{'topic':'character-art','stage':'implementation'}),('get_skill',{'skill_id':'ui-layout-design'}),
                        ('audit_system',{'spec':{'initial':'done','states':['done'],'terminal':['done'],'transitions':[]}}),
                        ('audit_transfer',{'spec':{'pleasure':'mastery','mappings':[{'condition':'learn','action':'act','feedback':'result','status':'mapped'}]}}),
                        ('validate_decision_card',{'card':{'trigger':'x','hypotheses':['x'],'check':'x','change':'x','exclusions':'x','expected':'x','rollback':'x','sources':['S01']}})]
